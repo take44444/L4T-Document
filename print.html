@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="what-is-l4t.html"><strong aria-hidden="true">1.</strong> What is L4T?</a></li><li class="chapter-item expanded "><a href="hello-world.html"><strong aria-hidden="true">2.</strong> Hello, world!</a></li><li class="chapter-item expanded "><a href="var.html"><strong aria-hidden="true">3.</strong> 変数</a></li><li class="chapter-item expanded "><a href="types/types.html"><strong aria-hidden="true">4.</strong> 型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="types/num.html"><strong aria-hidden="true">4.1.</strong> 整数</a></li><li class="chapter-item expanded "><a href="types/array.html"><strong aria-hidden="true">4.2.</strong> 配列</a></li><li class="chapter-item expanded "><a href="types/struct.html"><strong aria-hidden="true">4.3.</strong> 構造体</a></li><li class="chapter-item expanded "><a href="types/ptr.html"><strong aria-hidden="true">4.4.</strong> ポインタ</a></li><li class="chapter-item expanded "><a href="types/funcptr.html"><strong aria-hidden="true">4.5.</strong> 関数ポインタ</a></li></ol></li><li class="chapter-item expanded "><a href="func.html"><strong aria-hidden="true">5.</strong> 関数</a></li><li class="chapter-item expanded "><a href="if.html"><strong aria-hidden="true">6.</strong> if-elif-else文</a></li><li class="chapter-item expanded "><a href="loop.html"><strong aria-hidden="true">7.</strong> loop文</a></li><li class="chapter-item expanded "><a href="compound.html"><strong aria-hidden="true">8.</strong> ブロック</a></li><li class="chapter-item expanded "><a href="ffi.html"><strong aria-hidden="true">9.</strong> FFI</a></li><li class="chapter-item expanded "><a href="unsafe.html"><strong aria-hidden="true">10.</strong> unsafeブロック</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="what-is-l4t.html"><strong aria-hidden="true">1.</strong> What is L4T?</a></li><li class="chapter-item expanded "><a href="hello-world.html"><strong aria-hidden="true">2.</strong> Hello, world!</a></li><li class="chapter-item expanded "><a href="var.html"><strong aria-hidden="true">3.</strong> 変数</a></li><li class="chapter-item expanded "><a href="types/types.html"><strong aria-hidden="true">4.</strong> 型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="types/num.html"><strong aria-hidden="true">4.1.</strong> 整数</a></li><li class="chapter-item expanded "><a href="types/array.html"><strong aria-hidden="true">4.2.</strong> 配列</a></li><li class="chapter-item expanded "><a href="types/struct.html"><strong aria-hidden="true">4.3.</strong> 構造体</a></li><li class="chapter-item expanded "><a href="types/ptr.html"><strong aria-hidden="true">4.4.</strong> ポインタ</a></li><li class="chapter-item expanded "><a href="types/funcptr.html"><strong aria-hidden="true">4.5.</strong> 関数ポインタ</a></li></ol></li><li class="chapter-item expanded "><a href="func.html"><strong aria-hidden="true">5.</strong> 関数</a></li><li class="chapter-item expanded "><a href="if.html"><strong aria-hidden="true">6.</strong> if-elif-else文</a></li><li class="chapter-item expanded "><a href="loop.html"><strong aria-hidden="true">7.</strong> loop文</a></li><li class="chapter-item expanded "><a href="compound.html"><strong aria-hidden="true">8.</strong> ブロック</a></li><li class="chapter-item expanded "><a href="ffi.html"><strong aria-hidden="true">9.</strong> FFI</a></li><li class="chapter-item expanded "><a href="unsafe.html"><strong aria-hidden="true">10.</strong> unsafeブロック</a></li><li class="chapter-item expanded "><a href="lifetime.html"><strong aria-hidden="true">11.</strong> ライフタイム</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -309,7 +309,7 @@ c: a
 <p>このコードの7行目や9行目，10行目でも同様に<strong>deep copy</strong>が行われます．</p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="構造体"><a class="header" href="#構造体">構造体</a></h1>
-<p>配列では同じ型の複数の値を扱うことができましたが，構造体では，違う型も含み得る複数の値を扱うことができます．</p>
+<p><code>array</code> 型では同じ型の複数の値を扱うことができましたが，<code>struct</code> 型では，違う型も含み得る複数の値を扱うことができます．</p>
 <p>構造体の宣言は，以下のように書きます．</p>
 <pre><code>struct A
   num x
@@ -345,10 +345,10 @@ b2.other: &amp;b1
 (*(*(*b1.other).other).arrp)[0]: 500
 </code></pre>
 <p><code>.</code> を用いて，構造体のメンバにアクセスすることができます．</p>
-<div id="admonition-注意" class="admonition warning">
+<div id="admonition-caution" class="admonition warning">
 <div class="admonition-title">
-<p>注意</p>
-<p><a class="admonition-anchor-link" href="types/struct.html#admonition-注意"></a></p>
+<p>Caution!</p>
+<p><a class="admonition-anchor-link" href="types/struct.html#admonition-caution"></a></p>
 </div>
 <div>
 <p>18行目で <code>b2</code> に <code>b1</code> を代入した後，19行目で <code>b2.other: &amp;b1</code> としていますが，<strong>この時 <code>b1.other</code> の値は変化しません</strong>．構造体同士での代入演算では，<strong>deep copy</strong>が行われます．</p>
@@ -396,7 +396,7 @@ $$\rm{sizeof}(A) = 8 + 3 \times \rm{sizeof}(A)$$
 <p><code>ptr&lt;struct A&gt;</code> は<a href="types//types/ptr.html">ポインタ</a>であり，構造体 <code>A</code> のサイズに依らず8バイトだからです．</p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="ポインタ"><a class="header" href="#ポインタ">ポインタ</a></h1>
-<p>ポインタには，変数のアドレスを格納することができます．</p>
+<p><code>ptr</code> 型には，変数のアドレスを格納することができます．</p>
 <pre><code>num a, b
 ptr&lt;num&gt; p
 
@@ -483,10 +483,81 @@ func main() -&gt; num
 </lord-icon> <small> <code>extern &quot;C&quot; any malloc</code> と <code>extern &quot;C&quot; any printf</code> は未実装であり，現在は1行目と2行目を除いたコードを書くことで同じ挙動を試すことができます．</small></p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="関数ポインタ"><a class="header" href="#関数ポインタ">関数ポインタ</a></h1>
+<p><code>funcptr</code> 型には，関数のアドレスを格納することができます．</p>
+<p>関数ポインタは，下のコードのようにして宣言します．</p>
+<pre><code>funcptr (num) -&gt; num fp
+</code></pre>
+<p>これは， <code>num</code> 型の値を1つ引数として受け取り <code>num</code> 型の値を返す関数のアドレスを格納することができる関数ポインタです．</p>
+<p>下のコードは， <code>funcptr</code> 型の配列を宣言し，そこに <code>add</code> 関数と <code>sub</code> 関数のアドレスを代入し，その配列を使って関数を呼び出しています．</p>
+<pre><code>func add(num x, num y) -&gt; num
+  return x + y
+
+func sub(num x, num y) -&gt; num
+  return x - y
+
+func main() -&gt; num
+  array&lt;funcptr (num, num) -&gt; num&gt;[2] funcp_arr
+
+  funcp_arr[0]: add
+  funcp_arr[1]: sub
+
+  printf(&quot;%d\n&quot;, funcp_arr[0](100, 200))
+  printf(&quot;%d\n&quot;, funcp_arr[1](100, 200))
+  return 0
+
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="関数"><a class="header" href="#関数">関数</a></h1>
+<p>関数は，引数と呼ばれる入力値を受け取り，任意の型の値を1つ返すことができます．L4Tでは，引数は最大6個まで受け取れます．</p>
+<p>以下の関数を宣言したとしましょう．</p>
+<pre><code>func swap(array&lt;num&gt;[100] arr, num index1, num index2) -&gt; num
+  num tmp
+  tmp: arr[index1]
+  arr[index1]: arr[index2]
+  arr[index2]: tmp
+  return 0
+
+</code></pre>
+<p>これは，<a href="/types/ptr.html">4.4章 ポインタ</a>の<strong>Code examples</strong>で書いた関数に似ていますが，実は少し違います．</p>
+<p>実際にこの関数を使うと何が起こるか，下のコードを<a href="http://35.247.86.97/" target="_blank"><u><strong>L4T Playground</strong></u></a>で実行して見てみましょう．</p>
+<pre><code>func swap(array&lt;num&gt;[100] arr, num index1, num index2) -&gt; num
+  num tmp
+  tmp: arr[index1]
+  arr[index1]: arr[index2]
+  arr[index2]: tmp
+  return 0
+
+func main() -&gt; num
+  array&lt;num&gt;[100] arr
+  arr[20]: 20
+  arr[70]: 70
+
+  printf(&quot;arr[20] = %d, arr[70] = %d\n&quot;, arr[20], arr[70])
+
+  swap(arr, 20, 70)
+
+  printf(&quot;arr[20] = %d, arr[70] = %d\n&quot;, arr[20], arr[70])
+
+  return 0
+
+</code></pre>
+<p>配列の値が変化しないことを確認できたと思います．これは，<a href="/types/ptr.html">4.4章 ポインタ</a>の<strong>Code examples</strong>で書いた関数では引数でポインタを受け取っていましたが，上のコードでは <code>array</code> を<strong>deep copy</strong>で受け取っているからです．つまり， <code>swap</code> 関数の中で参照している <code>arr</code> は， <code>main</code> 関数の <code>arr</code> とは別のアドレスにある別の変数です．その配列の中身を書き換えても， <code>main</code> 関数の <code>arr</code> に変化がないのは当然ですね．</p>
+<p>このような引数の受け取り方は，<strong>値渡し</strong>と呼ばれます．一方で，<a href="/types/ptr.html">4.4章 ポインタ</a>で書いた関数のような引数の受け取り方は，<strong>ポインタ渡し</strong>と呼ばれます．</p>
+<p>用途に応じて，値渡しとポインタ渡しを使い分けましょう．</p>
+<h2 id="c言語では許されるがl4tでは禁止されている関数"><a class="header" href="#c言語では許されるがl4tでは禁止されている関数"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>C言語では許されるがL4Tでは禁止されている関数</a></h2>
+<p><small>この機能は開発中です</small></p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="if-elif-else文"><a class="header" href="#if-elif-else文">if-elif-else文</a></h1>
+<p><code>if-elif-else</code> 文を使うことで，条件分岐を行うことができます．</p>
+<pre><code>func is_zero(num x) -&gt; num
+  if x
+    return 0
+  else
+    return 1
+
+</code></pre>
+<p>上の関数は，引数で受け取った <code>x</code> の値が <code>0</code> であれば <code>1</code> を，それ以外の場合は <code>0</code> を返す関数です．2行目の <code>if</code> 文 では， <code>if</code> の横に来た値が <code>0</code> の場合はその直後の<a href="/compound.html"><strong>ブロック</strong></a>が実行されます． <code>else</code> 文の直後のブロックは，直前の <code>if</code> ( <code>elif</code> )の条件に当てはまっていない場合に実行されます．</p>
+<p><code>else</code> 文は，直前に <code>if</code> ( <code>elif</code> )文がないと使えません．</p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="loop文"><a class="header" href="#loop文"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>loop文</a></h1>
 <p><small>この機能は開発中です</small></p>
@@ -497,6 +568,9 @@ func main() -&gt; num
 <p><small>この機能は開発中です</small></p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="unsafeブロック"><a class="header" href="#unsafeブロック"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>unsafeブロック</a></h1>
+<p><small>この機能は開発中です</small></p>
+<div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<h1 id="ライフタイム"><a class="header" href="#ライフタイム"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>ライフタイム</a></h1>
 <p><small>この機能は開発中です</small></p>
 
                     </main>
