@@ -183,7 +183,7 @@ func main() -&gt; num
   trigger="loop"
   delay="1000"
   style="height:2em">
-</lord-icon> <small> <code>extern &quot;C&quot; any printf</code> は未実装であり，現在は1行目を除いたコードを書くことで同じ挙動を試せます．</small></p>
+</lord-icon> <small> <code>extern &quot;C&quot; any printf</code> は未実装であり，現在は1行目を除いたコードを書くことで同じ挙動を試すことができます．</small></p>
 <p>上のコードを実行すると，標準出力に</p>
 <pre><code>Hello, world!
 </code></pre>
@@ -213,10 +213,10 @@ func main() -&gt; num
 <h2 id="global変数とlocal変数"><a class="header" href="#global変数とlocal変数">global変数とlocal変数</a></h2>
 <p>上のコードの1行目と4行目ではどちらも変数を宣言していますが，宣言している場所が違います．1行目のように関数の外で宣言した変数を<strong>global変数</strong>，4行目のように関数の中で宣言した変数を<strong>local変数</strong>と呼びます．</p>
 <p>global変数は，宣言した行より下の任意の場所で使うことができますが，local変数は，宣言した関数(厳密には<a href="/compound.html"><strong>ブロック</strong></a>)内でしか使うことができません．</p>
-<div id="admonition-レベルアップ" class="admonition tip">
+<div id="admonition-level-up" class="admonition tip">
 <div class="admonition-title">
-<p>レベルアップ</p>
-<p><a class="admonition-anchor-link" href="var.html#admonition-レベルアップ"></a></p>
+<p>Level up!</p>
+<p><a class="admonition-anchor-link" href="var.html#admonition-level-up"></a></p>
 </div>
 <div>
 <p>L4Tのコンパイラは，global変数はデータ領域に，local変数はスタック領域やレジスタに割り当てます．</p>
@@ -270,7 +270,8 @@ c: a - 200
 <p><small>この機能は開発中です</small></p>
 <h3 id="multiplicative"><a class="header" href="#multiplicative"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Multiplicative</a></h3>
 <p><small>この機能は開発中です</small></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="配列"><a class="header" href="#配列">配列</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<h1 id="配列"><a class="header" href="#配列">配列</a></h1>
 <p><code>array</code> 型では，任意の同じ型の値を複数扱うことができます．</p>
 <p>例えば， <code>num</code> 型の配列は，以下のように扱うことができます．</p>
 <pre><code>array&lt;num&gt;[3] a, b
@@ -283,10 +284,10 @@ b[0]: 100
 b[1]: a[0] + a[1] - b[0]
 </code></pre>
 <p>上のコードでは，最終的に配列 <code>a</code> の値は <code>10</code> ， <code>20</code> ， <code>30</code> となり，配列 <code>b</code> の値は <code>100</code> ， <code>-70</code> ， <code>30</code> となります．( <code>b[2]</code> の値は2行目で <code>300</code> になりますが，6行目で <code>30</code> に上書きされます．)</p>
-<div id="admonition-注意" class="admonition warning">
+<div id="admonition-caution" class="admonition warning">
 <div class="admonition-title">
-<p>注意</p>
-<p><a class="admonition-anchor-link" href="types/array.html#admonition-注意"></a></p>
+<p>Caution!</p>
+<p><a class="admonition-anchor-link" href="types/array.html#admonition-caution"></a></p>
 </div>
 <div>
 <p>6行目で <code>b</code> に <code>a</code> を代入した後，7行目で <code>b[0]: 100</code> としていますが，<strong>この時 <code>a[0]</code> の値は変化しません</strong>．配列同士での代入演算では，<strong>deep copy</strong>が行われます．</p>
@@ -306,7 +307,8 @@ a[2]: b
 c: a
 </code></pre>
 <p>このコードの7行目や9行目，10行目でも同様に<strong>deep copy</strong>が行われます．</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="構造体"><a class="header" href="#構造体">構造体</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<h1 id="構造体"><a class="header" href="#構造体">構造体</a></h1>
 <p>配列では同じ型の複数の値を扱うことができましたが，構造体では，違う型も含み得る複数の値を扱うことができます．</p>
 <p>構造体の宣言は，以下のように書きます．</p>
 <pre><code>struct A
@@ -392,14 +394,104 @@ $$\rm{sizeof}(A) = 8 + 3 \times \rm{sizeof}(A)$$
 
 </code></pre>
 <p><code>ptr&lt;struct A&gt;</code> は<a href="types//types/ptr.html">ポインタ</a>であり，構造体 <code>A</code> のサイズに依らず8バイトだからです．</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="ポインタ"><a class="header" href="#ポインタ">ポインタ</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="関数ポインタ"><a class="header" href="#関数ポインタ">関数ポインタ</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="関数"><a class="header" href="#関数">関数</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="if-elif-else文"><a class="header" href="#if-elif-else文">if-elif-else文</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<h1 id="ポインタ"><a class="header" href="#ポインタ">ポインタ</a></h1>
+<p>ポインタには，変数のアドレスを格納することができます．</p>
+<pre><code>num a, b
+ptr&lt;num&gt; p
+
+a: b: 100
+
+p: &amp;a
+*p: 200
+
+p: &amp;b
+*p: 300
+</code></pre>
+<p>4行目で変数 <code>a</code> (と <code>b</code> )に <code>100</code> を代入した後，6行目で変数 <code>p</code> に 変数 <code>a</code> のアドレスを代入しています． <code>&amp;a</code> というように，変数の前に <code>&amp;</code> を付けると，その変数のアドレスを得ることができます．<a href="types//var.html">3章 変数</a>で，変数の実体はメモリ上にあることもレジスタ上にあることもあると説明しましたが，コード上で， <code>&amp;a</code> というような使い方をしている変数は，L4Tコンパイラによってメモリ上に割り当てられることが保証されています．</p>
+<p>その後7行目で <code>*p: 200</code> と書いてありますが，これは，ポインタ <code>p</code> に格納されているアドレスに <code>200</code> を格納するということを意味します．よって，ここで変数 <code>a</code> の値は <code>200</code> になります．</p>
+<p>9~10行目でも同様に，変数 <code>b</code> に格納されている値が <code>300</code> になります．</p>
+<pre><code>func main() -&gt; num
+  num a, b
+  ptr&lt;num&gt; p
+
+  a: b: 100
+
+  p: &amp;a
+  *p: 200
+
+  p: &amp;b
+  *p: 300
+  printf(&amp;&quot;a = %d, b = %d\n&quot;, a, b)
+
+  return 0
+
+</code></pre>
+<p>このコードを<a href="http://35.247.86.97/" target="_blank"><u><strong>L4T Playground</strong></u></a>で実行して， </p>
+<pre><code>a = 200, b = 300
+</code></pre>
+<p>と表示されることを確認してみましょう！ </p>
+<p>他にも，配列のポインタや構造体のポインタ，ポインタのポインタも扱うことができます．</p>
+<p><strong>ポインタは，&quot;低レベル&quot;プログラミングにおいて多くの人が最初につまづく概念</strong>です．下のポインタを使ったコードの例を見たり，自分で書いてみるなどして，少しずつ慣れていきましょう！</p>
+<h2 id="code-examples"><a class="header" href="#code-examples">Code examples</a></h2>
+<h3 id="関数の引数にポインタを使う例"><a class="header" href="#関数の引数にポインタを使う例">関数の引数にポインタを使う例</a></h3>
+<pre><code>func swap(ptr&lt;array&lt;num&gt;[100]&gt; arr_p, num index1, num index2) -&gt; num
+  num tmp
+  tmp: (*arr_p)[index1]
+  (*arr_p)[index1]: (*arr_p)[index2]
+  (*arr_p)[index2]: tmp
+  return 0
+
+func main() -&gt; num
+  array&lt;num&gt;[100] arr
+  arr[20]: 20
+  arr[70]: 70
+
+  printf(&quot;arr[20] = %d, arr[70] = %d\n&quot;, arr[20], arr[70])
+
+  swap(&amp;arr, 20, 70)
+
+  printf(&quot;arr[20] = %d, arr[70] = %d\n&quot;, arr[20], arr[70])
+
+  return 0
+
+</code></pre>
+<p><a href="types//func.html">関数</a> <code>swap</code> は，配列のポインタと2つの整数 <code>index1</code> と <code>index2</code> を引数として受け取り，配列の <code>index1</code> 番目の値と <code>index2</code> 番目の値を交換します．配列のアドレスを引数として受け取るため， <code>main</code> 関数内の変数である配列 <code>arr</code> の中身を書き換えることができます．このコードを<a href="http://35.247.86.97/" target="_blank"><u><strong>L4T Playground</strong></u></a>で実行して， <code>arr[20]</code> と <code>arr[70]</code> の値が実際に入れ替わっていることを確認しましょう！</p>
+<h3 id="ヒープ領域にメモリを確保する例"><a class="header" href="#ヒープ領域にメモリを確保する例">ヒープ領域にメモリを確保する例</a></h3>
+<p>下のコードは，ヒープ領域に\(8 \times 2 = 16\)バイトのメモリを確保し，その場所を長さが\(2\)の配列として使っています．</p>
+<pre><code>extern &quot;C&quot; any malloc
+extern &quot;C&quot; any printf
+
+func main() -&gt; num
+  ptr&lt;array&lt;num&gt;[2]&gt; arr
+  arr: malloc(16)
+
+  (*arr)[0]: 100
+  (*arr)[1]: 200
+
+  printf(&quot;%d, %d\n&quot;, (*arr)[0], (*arr)[1])
+
+  free(arr)
+  return 0
+
+</code></pre>
+<p><lord-icon
+  src="https://cdn.lordicon.com/giaigwkd.json"
+  trigger="loop"
+  delay="1000"
+  style="height:2em">
+</lord-icon> <small> <code>extern &quot;C&quot; any malloc</code> と <code>extern &quot;C&quot; any printf</code> は未実装であり，現在は1行目と2行目を除いたコードを書くことで同じ挙動を試すことができます．</small></p>
+<div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<h1 id="関数ポインタ"><a class="header" href="#関数ポインタ">関数ポインタ</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<h1 id="関数"><a class="header" href="#関数">関数</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<h1 id="if-elif-else文"><a class="header" href="#if-elif-else文">if-elif-else文</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="loop文"><a class="header" href="#loop文"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>loop文</a></h1>
 <p><small>この機能は開発中です</small></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="ブロック"><a class="header" href="#ブロック">ブロック</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+<h1 id="ブロック"><a class="header" href="#ブロック">ブロック</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="ffi"><a class="header" href="#ffi"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>FFI</a></h1>
 <p><small>この機能は開発中です</small></p>
