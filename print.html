@@ -212,7 +212,7 @@ func main() -&gt; num
 <p>このコードを実行すると， <code>111</code> と表示されます．</p>
 <h2 id="global変数とlocal変数"><a class="header" href="#global変数とlocal変数">global変数とlocal変数</a></h2>
 <p>上のコードの1行目と4行目ではどちらも変数を宣言していますが，宣言している場所が違います．1行目のように関数の外で宣言した変数を<strong>global変数</strong>，4行目のように関数の中で宣言した変数を<strong>local変数</strong>と呼びます．</p>
-<p>global変数は，宣言した行より下の任意の場所で使うことができますが，local変数は，宣言した関数(厳密には<strong>ブロック</strong>)内でしか使うことができません．</p>
+<p>global変数は，宣言した行より下の任意の場所で使うことができますが，local変数は，宣言した関数(厳密には<a href="/compound.html"><strong>ブロック</strong></a>)内でしか使うことができません．</p>
 <div id="admonition-レベルアップ" class="admonition tip">
 <div class="admonition-title">
 <p>レベルアップ</p>
@@ -289,7 +289,7 @@ b[1]: a[0] + a[1] - b[0]
 <p><a class="admonition-anchor-link" href="types/array.html#admonition-注意"></a></p>
 </div>
 <div>
-<p>6行目で <code>b</code> に <code>a</code> を代入した後，7行目で <code>b[0]: 100</code> としていますが，<strong>この時 <code>a[0]</code> の値は変化しません</strong>．配列同士での代入演算は，<strong>deep copy</strong>が行われます．</p>
+<p>6行目で <code>b</code> に <code>a</code> を代入した後，7行目で <code>b[0]: 100</code> としていますが，<strong>この時 <code>a[0]</code> の値は変化しません</strong>．配列同士での代入演算では，<strong>deep copy</strong>が行われます．</p>
 </div>
 </div>
 <p>他にも，配列の配列(\(n\)次元配列)や<a href="types//types/struct.html">構造体</a>の配列，<a href="types//types/ptr.html">ポインタ</a>の配列も扱うことができます．</p>
@@ -307,6 +307,91 @@ c: a
 </code></pre>
 <p>このコードの7行目や9行目，10行目でも同様に<strong>deep copy</strong>が行われます．</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="構造体"><a class="header" href="#構造体">構造体</a></h1>
+<p>配列では同じ型の複数の値を扱うことができましたが，構造体では，違う型も含み得る複数の値を扱うことができます．</p>
+<p>構造体の宣言は，以下のように書きます．</p>
+<pre><code>struct A
+  num x
+  array&lt;num&gt;[2] arr
+
+struct B
+  num x
+  ptr&lt;array&lt;num&gt;[2]&gt; arrp
+  struct A a
+  ptr&lt;struct B&gt; other
+
+</code></pre>
+<p>これで，構造体 <code>A</code> ，構造体 <code>B</code> という2つの型が使えるようになりました．以下のようにして，構造体構造体 <code>A</code> ，構造体 <code>B</code> の型の変数を定義し，使うことができます．</p>
+<pre><code>array&lt;num&gt;[2] arr
+struct A a
+struct B b1, b2
+
+arr[0]: 300
+arr[1]: 400
+
+a.x: 10
+a.arr[0]: 100
+a.arr[1]: 200
+
+a.arr: arr
+
+b1.x: a.x: 100
+b1.arrp: &amp;a.arr
+b1.a: a
+b1.other: &amp;b2
+b2: b1
+b2.other: &amp;b1
+(*(*(*b1.other).other).arrp)[0]: 500
+</code></pre>
+<p><code>.</code> を用いて，構造体のメンバにアクセスすることができます．</p>
+<div id="admonition-注意" class="admonition warning">
+<div class="admonition-title">
+<p>注意</p>
+<p><a class="admonition-anchor-link" href="types/struct.html#admonition-注意"></a></p>
+</div>
+<div>
+<p>18行目で <code>b2</code> に <code>b1</code> を代入した後，19行目で <code>b2.other: &amp;b1</code> としていますが，<strong>この時 <code>b1.other</code> の値は変化しません</strong>．構造体同士での代入演算では，<strong>deep copy</strong>が行われます．</p>
+</div>
+</div>
+<h2 id="構造体のサイズについて考える"><a class="header" href="#構造体のサイズについて考える">構造体のサイズについて考える</a></h2>
+<p>L4Tでは，構造体のサイズはコンパイル時に決定できる必要があります．以下の構造体の宣言を見てください．</p>
+<pre><code>struct A
+  num x
+  struct A other
+
+</code></pre>
+<p>もちろん構造体のメンバに構造体の実体を持つことはL4Tでも許可されていますが，上のコードは正しくありません．<a href="http://35.247.86.97/" target="_blank"><u><strong>L4T Playground</strong></u></a>で上の構造体をコンパイルして，下のようなエラーが出ることを確認してみましょう！</p>
+<pre><code>line:3/pos:10: cannot determine size of struct A
+  struct A other
+         ^
+</code></pre>
+<p>これは，構造体 <code>A</code> のサイズを決定できないというエラーです．ここで構造体 <code>A</code> のサイズを考えてみましょう．構造体 <code>A</code> のサイズは，</p>
+<p>$$\rm{sizeof}(A) = 8 + \rm{sizeof}(A)$$</p>
+<p>となり，右式に再び\(\rm{sizeof}(A)\)が出てきてしまうため，構造体 <code>A</code> のサイズを計算することができないわけです．</p>
+<p>同様に，以下のようなコードもコンパイルされません．(<a href="http://35.247.86.97/" target="_blank"><u><strong>L4T Playground</strong></u></a>で試してみましょう！)</p>
+<pre><code>struct A
+  num x
+  struct B b
+
+struct B
+  array&lt;struct C&gt;[3] c
+
+struct C
+  struct A a
+
+</code></pre>
+<p>$$\rm{sizeof}(A) = 8 + \rm{sizeof}(B)$$
+$$\rm{sizeof}(B) = 3 \times \rm{sizeof}(C)$$
+$$\rm{sizeof}(C) = \rm{sizeof}(A)$$</p>
+<p>であるため，
+$$\rm{sizeof}(A) = 8 + 3 \times \rm{sizeof}(A)$$
+となります．</p>
+<p>しかし，以下のようなコードは正しいコードです．</p>
+<pre><code>struct A
+  num x
+  ptr&lt;struct A&gt; other
+
+</code></pre>
+<p><code>ptr&lt;struct A&gt;</code> は<a href="types//types/ptr.html">ポインタ</a>であり，構造体 <code>A</code> のサイズに依らず8バイトだからです．</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ポインタ"><a class="header" href="#ポインタ">ポインタ</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="関数ポインタ"><a class="header" href="#関数ポインタ">関数ポインタ</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="関数"><a class="header" href="#関数">関数</a></h1>
