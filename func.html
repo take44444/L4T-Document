@@ -148,7 +148,9 @@
                     <main>
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="関数"><a class="header" href="#関数">関数</a></h1>
-<p>関数は，引数と呼ばれる入力値を受け取り，任意の型の値を1つ返すことができます．L4Tでは，引数は最大6個まで受け取れます．</p>
+<p>関数は，引数と呼ばれる入力値を受け取り，値を1つ返すことができます．L4Tでは，<strong>引数は最大6個まで</strong>受け取れます．</p>
+<p><font color="#F05"><strong>引数では任意の型の値を受け取れますが，返すことのできる値の型は <code>num</code> 型か <code>ptr</code> 型のみ</strong></font>です．</p>
+<p><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon><small>コンパイラによる引数の型のチェックは未実装です</small></p>
 <p>以下の関数を宣言したとしましょう．</p>
 <pre><code>func swap(array&lt;num&gt;[100] arr, num index1, num index2) -&gt; num
   num tmp
