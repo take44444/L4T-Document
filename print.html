@@ -196,7 +196,9 @@ func main() -&gt; num
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="変数"><a class="header" href="#変数">変数</a></h1>
 <p><strong>変数</strong>とは，値を一時的に格納する箱のようなものです．実体は<strong>スタック領域</strong>や<strong>ヒープ領域</strong>，<strong>データ領域</strong>等のメモリ上にあることもあれば，<strong>レジスタ</strong>であることもありますが，プログラマは特にそれを意識することなくプログラムを書くことができます．例を見てみましょう！</p>
-<pre><code>num g
+<pre><code>extern &quot;C&quot; any printf
+
+num g
 
 func main() -&gt; num
   num a, b
@@ -207,11 +209,17 @@ func main() -&gt; num
   return 0
 
 </code></pre>
-<p>変数の宣言は， <code>型名 変数名1, 変数名2, ...</code> と書きます．上のコードの1行目や4行目は， <code>num</code> 型の変数を宣言しています．</p>
-<p>5~7行目では，変数に値を代入しています．7行目のように，既に宣言した変数を用いて演算を行うこともできます．このように，変数は，複雑な計算をするのに非常に便利です．</p>
+<p><lord-icon
+  src="https://cdn.lordicon.com/giaigwkd.json"
+  trigger="loop"
+  delay="1000"
+  style="height:2em">
+</lord-icon> <small> <code>extern &quot;C&quot; any printf</code> は未実装であり，現在は1行目を除いたコードを書くことで同じ挙動を試すことができます．</small></p>
+<p>変数の宣言は， <code>型名 変数名1, 変数名2, ...</code> と書きます．上のコードの3行目や6行目は， <code>num</code> 型の変数を宣言しています．</p>
+<p>7~9行目では，変数に値を代入しています．9行目のように，既に宣言した変数を用いて演算を行うこともできます．このように，変数は，複雑な計算をするのに非常に便利です．</p>
 <p>このコードを実行すると， <code>111</code> と表示されます．</p>
 <h2 id="global変数とlocal変数"><a class="header" href="#global変数とlocal変数">global変数とlocal変数</a></h2>
-<p>上のコードの1行目と4行目ではどちらも変数を宣言していますが，宣言している場所が違います．1行目のように関数の外で宣言した変数を<strong>global変数</strong>，4行目のように関数の中で宣言した変数を<strong>local変数</strong>と呼びます．</p>
+<p>上のコードの3行目と6行目ではどちらも変数を宣言していますが，宣言している場所が違います．3行目のように関数の外で宣言した変数を<strong>global変数</strong>，6行目のように関数の中で宣言した変数を<strong>local変数</strong>と呼びます．</p>
 <p>global変数は，宣言した行より下の任意の場所で使うことができますが，local変数は，宣言した関数(厳密には<a href="/compound.html"><strong>ブロック</strong></a>)内でしか使うことができません．</p>
 <div id="admonition-level-up" class="admonition tip">
 <div class="admonition-title">
@@ -489,7 +497,9 @@ func main() -&gt; num
 </code></pre>
 <p>これは， <code>num</code> 型の値を1つ引数として受け取り <code>num</code> 型の値を返す関数のアドレスを格納することができる関数ポインタです．</p>
 <p>下のコードは， <code>funcptr</code> 型の配列を宣言し，そこに <code>add</code> 関数と <code>sub</code> 関数のアドレスを代入し，その配列を使って関数を呼び出しています．</p>
-<pre><code>func add(num x, num y) -&gt; num
+<pre><code>extern &quot;C&quot; any printf
+
+func add(num x, num y) -&gt; num
   return x + y
 
 func sub(num x, num y) -&gt; num
@@ -506,6 +516,12 @@ func main() -&gt; num
   return 0
 
 </code></pre>
+<p><lord-icon
+  src="https://cdn.lordicon.com/giaigwkd.json"
+  trigger="loop"
+  delay="1000"
+  style="height:2em">
+</lord-icon> <small> <code>extern &quot;C&quot; any printf</code> は未実装であり，現在は1行目を除いたコードを書くことで同じ挙動を試すことができます．</small></p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="関数"><a class="header" href="#関数">関数</a></h1>
 <p>関数は，引数と呼ばれる入力値を受け取り，値を1つ返すことができます．L4Tでは，<strong>引数は最大6個まで</strong>受け取れます．</p>
@@ -558,7 +574,7 @@ func main() -&gt; num
     return 1
 
 </code></pre>
-<p>上の関数は，引数で受け取った <code>x</code> の値が <code>0</code> であれば <code>1</code> を，それ以外の場合は <code>0</code> を返す関数です．2行目の <code>if</code> 文 では， <code>if</code> の横に来た値が <code>0</code> の場合はその直後の<a href="/compound.html"><strong>ブロック</strong></a>が実行されます． <code>else</code> 文の直後のブロックは，直前の <code>if</code> ( <code>elif</code> )の条件に当てはまっていない場合に実行されます．</p>
+<p>上の関数は，引数で受け取った <code>x</code> の値が <code>0</code> であれば <code>1</code> を，それ以外の場合は <code>0</code> を返す関数です．2行目の <code>if</code> 文 では， <code>if</code> の横に来た値が <code>0</code> 以外の場合はその直後の<a href="/compound.html"><strong>ブロック</strong></a>が実行されます． <code>else</code> 文の直後のブロックは，直前の <code>if</code> ( <code>elif</code> )で値が <code>0</code> だった場合に実行されます．</p>
 <p><code>else</code> 文は，直前に <code>if</code> ( <code>elif</code> )文がないと使えません．</p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="loop文"><a class="header" href="#loop文"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>loop文</a></h1>

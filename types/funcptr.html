@@ -154,7 +154,9 @@
 </code></pre>
 <p>これは， <code>num</code> 型の値を1つ引数として受け取り <code>num</code> 型の値を返す関数のアドレスを格納することができる関数ポインタです．</p>
 <p>下のコードは， <code>funcptr</code> 型の配列を宣言し，そこに <code>add</code> 関数と <code>sub</code> 関数のアドレスを代入し，その配列を使って関数を呼び出しています．</p>
-<pre><code>func add(num x, num y) -&gt; num
+<pre><code>extern &quot;C&quot; any printf
+
+func add(num x, num y) -&gt; num
   return x + y
 
 func sub(num x, num y) -&gt; num
@@ -171,6 +173,12 @@ func main() -&gt; num
   return 0
 
 </code></pre>
+<p><lord-icon
+  src="https://cdn.lordicon.com/giaigwkd.json"
+  trigger="loop"
+  delay="1000"
+  style="height:2em">
+</lord-icon> <small> <code>extern &quot;C&quot; any printf</code> は未実装であり，現在は1行目を除いたコードを書くことで同じ挙動を試すことができます．</small></p>
 
                     </main>
 
