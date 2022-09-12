@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../what-is-l4t.html"><strong aria-hidden="true">1.</strong> What is L4T?</a></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, world!</a></li><li class="chapter-item expanded "><a href="../var.html"><strong aria-hidden="true">3.</strong> 変数</a></li><li class="chapter-item expanded "><a href="../types/types.html"><strong aria-hidden="true">4.</strong> 型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../types/num.html"><strong aria-hidden="true">4.1.</strong> 整数</a></li><li class="chapter-item expanded "><a href="../types/array.html"><strong aria-hidden="true">4.2.</strong> 配列</a></li><li class="chapter-item expanded "><a href="../types/struct.html"><strong aria-hidden="true">4.3.</strong> 構造体</a></li><li class="chapter-item expanded "><a href="../types/ptr.html"><strong aria-hidden="true">4.4.</strong> ポインタ</a></li><li class="chapter-item expanded "><a href="../types/funcptr.html" class="active"><strong aria-hidden="true">4.5.</strong> 関数ポインタ</a></li></ol></li><li class="chapter-item expanded "><a href="../func.html"><strong aria-hidden="true">5.</strong> 関数</a></li><li class="chapter-item expanded "><a href="../if.html"><strong aria-hidden="true">6.</strong> if-elif-else文</a></li><li class="chapter-item expanded "><a href="../loop.html"><strong aria-hidden="true">7.</strong> loop文</a></li><li class="chapter-item expanded "><a href="../compound.html"><strong aria-hidden="true">8.</strong> ブロック</a></li><li class="chapter-item expanded "><a href="../ffi.html"><strong aria-hidden="true">9.</strong> FFI</a></li><li class="chapter-item expanded "><a href="../unsafe.html"><strong aria-hidden="true">10.</strong> unsafeブロック</a></li><li class="chapter-item expanded "><a href="../lifetime.html"><strong aria-hidden="true">11.</strong> ライフタイム</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../what-is-l4t.html"><strong aria-hidden="true">1.</strong> What is L4T?</a></li><li class="chapter-item expanded "><a href="../hello-world.html"><strong aria-hidden="true">2.</strong> Hello, world!</a></li><li class="chapter-item expanded "><a href="../var.html"><strong aria-hidden="true">3.</strong> 変数</a></li><li class="chapter-item expanded "><a href="../types/types.html"><strong aria-hidden="true">4.</strong> 型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../types/num.html"><strong aria-hidden="true">4.1.</strong> 整数</a></li><li class="chapter-item expanded "><a href="../types/array.html"><strong aria-hidden="true">4.2.</strong> 配列</a></li><li class="chapter-item expanded "><a href="../types/struct.html"><strong aria-hidden="true">4.3.</strong> 構造体</a></li><li class="chapter-item expanded "><a href="../types/ptr.html"><strong aria-hidden="true">4.4.</strong> ポインタ</a></li><li class="chapter-item expanded "><a href="../types/funcptr.html" class="active"><strong aria-hidden="true">4.5.</strong> 関数ポインタ</a></li></ol></li><li class="chapter-item expanded "><a href="../func.html"><strong aria-hidden="true">5.</strong> 関数</a></li><li class="chapter-item expanded "><a href="../ffi.html"><strong aria-hidden="true">6.</strong> FFI</a></li><li class="chapter-item expanded "><a href="../if.html"><strong aria-hidden="true">7.</strong> if-elif-else文</a></li><li class="chapter-item expanded "><a href="../loop.html"><strong aria-hidden="true">8.</strong> loop文</a></li><li class="chapter-item expanded "><a href="../compound.html"><strong aria-hidden="true">9.</strong> ブロック</a></li><li class="chapter-item expanded "><a href="../lifetime.html"><strong aria-hidden="true">10.</strong> ライフタイム</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -154,7 +154,7 @@
 </code></pre>
 <p>これは， <code>num</code> 型の値を1つ引数として受け取り <code>num</code> 型の値を返す関数のアドレスを格納することができる関数ポインタです．</p>
 <p>下のコードは， <code>funcptr</code> 型の配列を宣言し，そこに <code>add</code> 関数と <code>sub</code> 関数のアドレスを代入し，その配列を使って関数を呼び出しています．</p>
-<pre><code>extern &quot;C&quot; any printf
+<pre><code>ffi &quot;C&quot; printf
 
 func add(num x, num y) -&gt; num
   return x + y
@@ -173,12 +173,6 @@ func main() -&gt; num
   return 0
 
 </code></pre>
-<p><lord-icon
-  src="https://cdn.lordicon.com/giaigwkd.json"
-  trigger="loop"
-  delay="1000"
-  style="height:2em">
-</lord-icon> <small> <code>extern &quot;C&quot; any printf</code> は未実装であり，現在は1行目を除いたコードを書くことで同じ挙動を試すことができます．</small></p>
 
                     </main>
 

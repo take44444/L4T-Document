@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="what-is-l4t.html"><strong aria-hidden="true">1.</strong> What is L4T?</a></li><li class="chapter-item expanded "><a href="hello-world.html"><strong aria-hidden="true">2.</strong> Hello, world!</a></li><li class="chapter-item expanded "><a href="var.html"><strong aria-hidden="true">3.</strong> 変数</a></li><li class="chapter-item expanded "><a href="types/types.html"><strong aria-hidden="true">4.</strong> 型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="types/num.html"><strong aria-hidden="true">4.1.</strong> 整数</a></li><li class="chapter-item expanded "><a href="types/array.html"><strong aria-hidden="true">4.2.</strong> 配列</a></li><li class="chapter-item expanded "><a href="types/struct.html"><strong aria-hidden="true">4.3.</strong> 構造体</a></li><li class="chapter-item expanded "><a href="types/ptr.html"><strong aria-hidden="true">4.4.</strong> ポインタ</a></li><li class="chapter-item expanded "><a href="types/funcptr.html"><strong aria-hidden="true">4.5.</strong> 関数ポインタ</a></li></ol></li><li class="chapter-item expanded "><a href="func.html"><strong aria-hidden="true">5.</strong> 関数</a></li><li class="chapter-item expanded "><a href="if.html" class="active"><strong aria-hidden="true">6.</strong> if-elif-else文</a></li><li class="chapter-item expanded "><a href="loop.html"><strong aria-hidden="true">7.</strong> loop文</a></li><li class="chapter-item expanded "><a href="compound.html"><strong aria-hidden="true">8.</strong> ブロック</a></li><li class="chapter-item expanded "><a href="ffi.html"><strong aria-hidden="true">9.</strong> FFI</a></li><li class="chapter-item expanded "><a href="unsafe.html"><strong aria-hidden="true">10.</strong> unsafeブロック</a></li><li class="chapter-item expanded "><a href="lifetime.html"><strong aria-hidden="true">11.</strong> ライフタイム</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="what-is-l4t.html"><strong aria-hidden="true">1.</strong> What is L4T?</a></li><li class="chapter-item expanded "><a href="hello-world.html"><strong aria-hidden="true">2.</strong> Hello, world!</a></li><li class="chapter-item expanded "><a href="var.html"><strong aria-hidden="true">3.</strong> 変数</a></li><li class="chapter-item expanded "><a href="types/types.html"><strong aria-hidden="true">4.</strong> 型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="types/num.html"><strong aria-hidden="true">4.1.</strong> 整数</a></li><li class="chapter-item expanded "><a href="types/array.html"><strong aria-hidden="true">4.2.</strong> 配列</a></li><li class="chapter-item expanded "><a href="types/struct.html"><strong aria-hidden="true">4.3.</strong> 構造体</a></li><li class="chapter-item expanded "><a href="types/ptr.html"><strong aria-hidden="true">4.4.</strong> ポインタ</a></li><li class="chapter-item expanded "><a href="types/funcptr.html"><strong aria-hidden="true">4.5.</strong> 関数ポインタ</a></li></ol></li><li class="chapter-item expanded "><a href="func.html"><strong aria-hidden="true">5.</strong> 関数</a></li><li class="chapter-item expanded "><a href="ffi.html"><strong aria-hidden="true">6.</strong> FFI</a></li><li class="chapter-item expanded "><a href="if.html" class="active"><strong aria-hidden="true">7.</strong> if-elif-else文</a></li><li class="chapter-item expanded "><a href="loop.html"><strong aria-hidden="true">8.</strong> loop文</a></li><li class="chapter-item expanded "><a href="compound.html"><strong aria-hidden="true">9.</strong> ブロック</a></li><li class="chapter-item expanded "><a href="lifetime.html"><strong aria-hidden="true">10.</strong> ライフタイム</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -156,14 +156,14 @@
     return 1
 
 </code></pre>
-<p>上の関数は，引数で受け取った <code>x</code> の値が <code>0</code> であれば <code>1</code> を，それ以外の場合は <code>0</code> を返す関数です．2行目の <code>if</code> 文 では， <code>if</code> の横に来た値が <code>0</code> 以外の場合はその直後の<a href="/compound.html"><strong>ブロック</strong></a>が実行されます． <code>else</code> 文の直後のブロックは，直前の <code>if</code> ( <code>elif</code> )で値が <code>0</code> だった場合に実行されます．</p>
+<p>上の関数は，引数で受け取った <code>x</code> の値が <code>0</code> であれば <code>1</code> を，それ以外の場合は <code>0</code> を返す関数です．2行目の <code>if</code> 文 では， <code>if</code> の横に来た値が <code>0</code> 以外の場合はその直後の<a href="./compound.html"><strong>ブロック</strong></a>が実行されます． <code>else</code> 文の直後のブロックは，直前の <code>if</code> ( <code>elif</code> )で値が <code>0</code> だった場合に実行されます．</p>
 <p><code>else</code> 文は，直前に <code>if</code> ( <code>elif</code> )文がないと使えません．</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="func.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="ffi.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
@@ -177,7 +177,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="func.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="ffi.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 

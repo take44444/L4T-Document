@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="what-is-l4t.html"><strong aria-hidden="true">1.</strong> What is L4T?</a></li><li class="chapter-item expanded "><a href="hello-world.html"><strong aria-hidden="true">2.</strong> Hello, world!</a></li><li class="chapter-item expanded "><a href="var.html"><strong aria-hidden="true">3.</strong> 変数</a></li><li class="chapter-item expanded "><a href="types/types.html"><strong aria-hidden="true">4.</strong> 型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="types/num.html"><strong aria-hidden="true">4.1.</strong> 整数</a></li><li class="chapter-item expanded "><a href="types/array.html"><strong aria-hidden="true">4.2.</strong> 配列</a></li><li class="chapter-item expanded "><a href="types/struct.html"><strong aria-hidden="true">4.3.</strong> 構造体</a></li><li class="chapter-item expanded "><a href="types/ptr.html"><strong aria-hidden="true">4.4.</strong> ポインタ</a></li><li class="chapter-item expanded "><a href="types/funcptr.html"><strong aria-hidden="true">4.5.</strong> 関数ポインタ</a></li></ol></li><li class="chapter-item expanded "><a href="func.html"><strong aria-hidden="true">5.</strong> 関数</a></li><li class="chapter-item expanded "><a href="if.html"><strong aria-hidden="true">6.</strong> if-elif-else文</a></li><li class="chapter-item expanded "><a href="loop.html"><strong aria-hidden="true">7.</strong> loop文</a></li><li class="chapter-item expanded "><a href="compound.html"><strong aria-hidden="true">8.</strong> ブロック</a></li><li class="chapter-item expanded "><a href="ffi.html" class="active"><strong aria-hidden="true">9.</strong> FFI</a></li><li class="chapter-item expanded "><a href="unsafe.html"><strong aria-hidden="true">10.</strong> unsafeブロック</a></li><li class="chapter-item expanded "><a href="lifetime.html"><strong aria-hidden="true">11.</strong> ライフタイム</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="what-is-l4t.html"><strong aria-hidden="true">1.</strong> What is L4T?</a></li><li class="chapter-item expanded "><a href="hello-world.html"><strong aria-hidden="true">2.</strong> Hello, world!</a></li><li class="chapter-item expanded "><a href="var.html"><strong aria-hidden="true">3.</strong> 変数</a></li><li class="chapter-item expanded "><a href="types/types.html"><strong aria-hidden="true">4.</strong> 型</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="types/num.html"><strong aria-hidden="true">4.1.</strong> 整数</a></li><li class="chapter-item expanded "><a href="types/array.html"><strong aria-hidden="true">4.2.</strong> 配列</a></li><li class="chapter-item expanded "><a href="types/struct.html"><strong aria-hidden="true">4.3.</strong> 構造体</a></li><li class="chapter-item expanded "><a href="types/ptr.html"><strong aria-hidden="true">4.4.</strong> ポインタ</a></li><li class="chapter-item expanded "><a href="types/funcptr.html"><strong aria-hidden="true">4.5.</strong> 関数ポインタ</a></li></ol></li><li class="chapter-item expanded "><a href="func.html"><strong aria-hidden="true">5.</strong> 関数</a></li><li class="chapter-item expanded "><a href="ffi.html" class="active"><strong aria-hidden="true">6.</strong> FFI</a></li><li class="chapter-item expanded "><a href="if.html"><strong aria-hidden="true">7.</strong> if-elif-else文</a></li><li class="chapter-item expanded "><a href="loop.html"><strong aria-hidden="true">8.</strong> loop文</a></li><li class="chapter-item expanded "><a href="compound.html"><strong aria-hidden="true">9.</strong> ブロック</a></li><li class="chapter-item expanded "><a href="lifetime.html"><strong aria-hidden="true">10.</strong> ライフタイム</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,18 +147,58 @@
                 <div id="content" class="content">
                     <main>
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-<h1 id="ffi"><a class="header" href="#ffi"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>FFI</a></h1>
-<p><small>この機能は開発中です</small></p>
+<h1 id="ffi"><a class="header" href="#ffi">FFI</a></h1>
+<p>ここまでの章で， <code>ffi &quot;C&quot; printf</code> というような文が何度も出てきて，その度にもやもやされた方もいらっしゃるかもしれません．ここでは，この <code>ffi</code> について説明します．</p>
+<p><strong>FFI (Foreign Function Interface)</strong> とは，あるプログラミング言語から他のプログラミング言語で定義された関数などを利用するための機構です．FFIはL4Tに関係なく一般的な用語で，<strong>Rust</strong>や<strong>Go</strong>などの他の言語にも同じ機能があります．</p>
+<p>L4Tでは，<code>ffi &quot;C&quot; ????</code> と書くことで<strong>C言語</strong>で定義された関数を利用することができます．これまでの章で <code>ffi &quot;C&quot; printf</code> と書いたとき，コード内に <code>printf</code> 関数の定義がないのにも関わらず <code>printf</code> 関数を使っていたと思います．これは，そのコード内ではなく，C言語の標準ライブラリの中で定義された <code>printf</code> 関数を呼び出していたからです．</p>
+<p>同じように書くことで，C言語の標準ライブラリに含まれる他の関数も呼び出すことができます．これまでの章でも， <code>malloc</code> や <code>free</code> を使いました．</p>
+<div id="admonition-コンパイラ責任とプログラマ責任" class="admonition note">
+<div class="admonition-title">
+<p>コンパイラ責任とプログラマ責任</p>
+<p><a class="admonition-anchor-link" href="#admonition-コンパイラ責任とプログラマ責任"></a></p>
+</div>
+<div>
+<p><code>ffi &quot;C&quot; printf</code> を見てわかるように，C言語で定義された関数のインターフェース(引数や返り値)は，L4Tで保証することができません．そのため，これらの関数の使用は<strong>L4Tコンパイラの管理外</strong>であり，その部分の安全性の確認は<strong>プログラマ責任</strong>となります．誤った使い方をした場合，エラーは<strong>実行時</strong>に発生する可能性があります．これは私たちプログラマが最も恐れる(べき)ことの1つです．使用する際は，よく確認するようにしましょう．</p>
+</div>
+</div>
+<p>以下は誤ったコードの例です．皆さんもどこがどのように間違っているか，考えてみてください．</p>
+<pre><code>ffi &quot;C&quot; free
+ffi &quot;C&quot; malloc
+ffi &quot;C&quot; printf
+
+func main() -&gt; num
+  array&lt;num&gt;[2] arr
+  arr: malloc(16)
+
+  arr[0]: 100
+  arr[1]: 200
+
+  printf(&quot;%d, %d\n&quot;, arr[0], arr[1])
+
+  free(arr)
+  return 0
+
+</code></pre>
+<details style="cursor : pointer;">
+<summary>+ 答えを表示</summary>
+<div>
+<p><code>free(arr)</code> で解放されるのはスタック領域にある変数 <code>arr</code> のメモリであり， <code>malloc(16)</code> で確保したヒープ領域のメモリではありません．そのため，</p>
+<pre><code>munmap_chunk(): invalid pointer
+</code></pre>
+<p>というエラーが<strong>実行時に</strong>発生します．これは， <code>malloc</code> や <code>calloc</code> で確保したメモリ領域ではない場所を， <code>free</code> で解放しようとしたときに発生するエラーです．</p>
+<p>実際にこのコードを<a href="http://35.247.86.97/" target="_blank"><u><strong>L4T Playground</strong></u></a>で実行して，<font color="#F05"><strong>コンパイルは通るのにエラーが実行時に発生する</strong></font>ことを確認しましょう！</p>
+</div>
+</details>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="compound.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="func.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="unsafe.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="if.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -168,11 +208,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="compound.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="func.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="unsafe.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="if.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
