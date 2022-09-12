@@ -236,7 +236,57 @@ b: 20
 a: b
 a: b: 100
 </code></pre>
-<p>6行目では， <code>b</code> に <code>100</code> が代入された後， <code>a</code> にも <code>100</code> が代入されます．</p>
+<p>6行目では， <code>b</code> に <code>100</code> が代入された後， <code>a</code> にも <code>100</code> が代入されます．これは，L4Tの代入は，**代入&quot;文&quot;ではなく代入&quot;式&quot;**であり，代入した値として評価されるからです．</p>
+<h3 id="logical-or"><a class="header" href="#logical-or">Logical Or</a></h3>
+<p><a href="types/../if.html">if-elif-else文</a>と組み合わせて使うと便利です．</p>
+<pre><code>num a, b, c
+a: 3
+b: 10
+c: a &lt; 4 || b &gt; 10
+</code></pre>
+<h3 id="logical-and"><a class="header" href="#logical-and">Logical And</a></h3>
+<p><a href="types/../if.html">if-elif-else文</a>と組み合わせて使うと便利です．</p>
+<pre><code>num a, b, c
+a: 3
+b: 10
+c: a &lt; 4 &amp;&amp; b &gt; 10
+</code></pre>
+<h3 id="bitwise-or"><a class="header" href="#bitwise-or"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise Or</a></h3>
+<p><small>この機能は開発中です</small></p>
+<h3 id="bitwise-xor"><a class="header" href="#bitwise-xor"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise Xor</a></h3>
+<p><small>この機能は開発中です</small></p>
+<h3 id="bitwise-and"><a class="header" href="#bitwise-and"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise And</a></h3>
+<p><small>この機能は開発中です</small></p>
+<h3 id="equality"><a class="header" href="#equality">Equality</a></h3>
+<p><a href="types/../if.html">if-elif-else文</a>と組み合わせて使うと便利です．</p>
+<pre><code>num a, b
+a: 3
+b: a = 3
+</code></pre>
+<pre><code>num a, b
+a: 3
+b: a != 3
+</code></pre>
+<h3 id="relational"><a class="header" href="#relational">Relational</a></h3>
+<p><a href="types/../if.html">if-elif-else文</a>と組み合わせて使うと便利です．</p>
+<pre><code>num a, b
+a: 3
+b: a &lt; 3
+</code></pre>
+<pre><code>num a, b
+a: 3
+b: a &lt;= 3
+</code></pre>
+<pre><code>num a, b
+a: 3
+b: a &gt; 3
+</code></pre>
+<pre><code>num a, b
+a: 3
+b: a &gt;= 3
+</code></pre>
+<h3 id="shift"><a class="header" href="#shift"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Shift</a></h3>
+<p><small>この機能は開発中です</small></p>
 <h3 id="additive"><a class="header" href="#additive">Additive</a></h3>
 <p>和は <code>+</code> ，差は <code>-</code> で行います．</p>
 <pre><code>num a, b, c
@@ -248,24 +298,16 @@ c: a + b
 c: a - 200
 </code></pre>
 <p><code>c</code> には，5行目では <code>3</code> ，6行目では <code>30</code> ，7行目では <code>-190</code> が代入されます．</p>
-<h3 id="logical-or"><a class="header" href="#logical-or"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Logical Or</a></h3>
-<p><small>この機能は開発中です</small></p>
-<h3 id="logical-and"><a class="header" href="#logical-and"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Logical And</a></h3>
-<p><small>この機能は開発中です</small></p>
-<h3 id="bitwise-or"><a class="header" href="#bitwise-or"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise Or</a></h3>
-<p><small>この機能は開発中です</small></p>
-<h3 id="bitwise-xor"><a class="header" href="#bitwise-xor"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise Xor</a></h3>
-<p><small>この機能は開発中です</small></p>
-<h3 id="bitwise-and"><a class="header" href="#bitwise-and"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise And</a></h3>
-<p><small>この機能は開発中です</small></p>
-<h3 id="equality"><a class="header" href="#equality"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Equality</a></h3>
-<p><small>この機能は開発中です</small></p>
-<h3 id="relational"><a class="header" href="#relational"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Relational</a></h3>
-<p><small>この機能は開発中です</small></p>
-<h3 id="shift"><a class="header" href="#shift"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Shift</a></h3>
-<p><small>この機能は開発中です</small></p>
-<h3 id="multiplicative"><a class="header" href="#multiplicative"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Multiplicative</a></h3>
-<p><small>この機能は開発中です</small></p>
+<h3 id="multiplicative"><a class="header" href="#multiplicative">Multiplicative</a></h3>
+<p>積は <code>*</code> ，商は <code>/</code> で行います．剰余は <code>%</code> です．</p>
+<pre><code>num a, b, c
+
+a: 10
+b: 20
+c: 10 / 5
+c: b % a
+c: a * 200
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="配列"><a class="header" href="#配列">配列</a></h1>
 <p><code>array</code> 型では，任意の同じ型の値を複数扱うことができます．</p>
@@ -595,8 +637,40 @@ func main() -&gt; num
 <p>上の関数は，引数で受け取った <code>x</code> の値が <code>0</code> であれば <code>1</code> を，それ以外の場合は <code>0</code> を返す関数です．2行目の <code>if</code> 文 では， <code>if</code> の横に来た値が <code>0</code> 以外の場合はその直後の<a href="./compound.html"><strong>ブロック</strong></a>が実行されます． <code>else</code> 文の直後のブロックは，直前の <code>if</code> ( <code>elif</code> )で値が <code>0</code> だった場合に実行されます．</p>
 <p><code>else</code> 文は，直前に <code>if</code> ( <code>elif</code> )文がないと使えません．</p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-<h1 id="loop文"><a class="header" href="#loop文"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>loop文</a></h1>
-<p><small>この機能は開発中です</small></p>
+<h1 id="loop文"><a class="header" href="#loop文">loop文</a></h1>
+<p><code>loop</code> 文を使うことで，繰り返し処理を行うことができます．</p>
+<pre><code>num a
+a: 0
+
+loop a &lt; 5
+  printf(&quot;%d\n&quot;, a: a + 1)
+
+</code></pre>
+<p><code>loop</code> 文は，条件式の値が <code>0</code> 以外である限り，中身のコードを繰り返し実行します．上のコードは， <code>a</code> の値が <code>5</code> より小さい限り <code>printf(&quot;%d\n&quot;, a: a + 1)</code> を繰り返すコードです．</p>
+<p>下のコードを<a href="http://35.247.86.97/" target="_blank"><u><strong>L4T Playground</strong></u></a>で実行して，実際に動作を確認しましょう！</p>
+<pre><code>ffi &quot;C&quot; printf
+
+func main() -&gt; num
+  num a
+  a: 0
+  loop a &lt; 5
+    printf(&quot;%d\n&quot;, a: a + 1)
+  return 0
+
+</code></pre>
+<h2 id="break文とcontinue文"><a class="header" href="#break文とcontinue文">break文とcontinue文</a></h2>
+<p>下のコードは，上のコードと同じ動作をします．</p>
+<pre><code>num a
+a: 0
+
+loop 1
+  if a &lt; 5
+    printf(&quot;%d\n&quot;, a: a + 1)
+    continue
+  break
+
+</code></pre>
+<p><code>continue</code> は，loop文の先頭に戻る文で， <code>break</code> はloopを抜け出す文です．</p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="ブロック"><a class="header" href="#ブロック">ブロック</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
