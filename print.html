@@ -229,28 +229,31 @@ func main() -&gt; num
 <h2 id="2項演算"><a class="header" href="#2項演算">2項演算</a></h2>
 <h3 id="assignment"><a class="header" href="#assignment">Assignment</a></h3>
 <p>代入演算は <code>:</code> で行います．</p>
-<pre><code>num a, b
-
-a: 10
-b: 20
-a: b
-a: b: 100
+<pre><code>a: 10
 </code></pre>
-<p>6行目では， <code>b</code> に <code>100</code> が代入された後， <code>a</code> にも <code>100</code> が代入されます．これは，L4Tの代入は，**代入&quot;文&quot;ではなく代入&quot;式&quot;**であり，代入した値として評価されるからです．</p>
+<p><code>a</code> に <code>10</code> が代入されます．</p>
+<pre><code>b: a
+</code></pre>
+<p><code>b</code> に <code>a</code> の値が代入されます．</p>
+<pre><code>a: b: 100
+</code></pre>
+<p><code>b</code> に <code>100</code> が代入された後， <code>a</code> にも <code>100</code> が代入されます．これは，L4Tの代入は， <strong>代入&quot;文&quot;ではなく代入&quot;式&quot;</strong> であり，代入した値として評価されるからです．</p>
 <h3 id="logical-or"><a class="header" href="#logical-or">Logical Or</a></h3>
-<p><a href="types/../if.html">if-elif-else文</a>と組み合わせて使うと便利です．</p>
-<pre><code>num a, b, c
-a: 3
+<p>まず左の式を評価し，左の式が <code>0</code> のときのみ右の式を評価します．どちらも <code>0</code> のときは <code>0</code> と評価され，それ以外は <code>1</code> と評価されます．
+<a href="types/../if.html">if-elif-else文</a>や<a href="types/../loop.html">loop文</a>と組み合わせて使うと便利です．</p>
+<pre><code>a: 5
 b: 10
 c: a &lt; 4 || b &gt; 10
 </code></pre>
+<p><code>c</code> には <code>0</code> が代入されます．</p>
 <h3 id="logical-and"><a class="header" href="#logical-and">Logical And</a></h3>
-<p><a href="types/../if.html">if-elif-else文</a>と組み合わせて使うと便利です．</p>
-<pre><code>num a, b, c
-a: 3
+<p>まず左の式を評価し，左の式が <code>0</code> 以外のときのみ右の式を評価します．どちらも <code>0</code> ではないときは <code>1</code> と評価され，それ以外は <code>0</code> と評価されます．
+<a href="types/../if.html">if-elif-else文</a>や<a href="types/../loop.html">loop文</a>と組み合わせて使うと便利です．</p>
+<pre><code>a: 3
 b: 10
 c: a &lt; 4 &amp;&amp; b &gt; 10
 </code></pre>
+<p><code>c</code> には <code>0</code> が代入されます．</p>
 <h3 id="bitwise-or"><a class="header" href="#bitwise-or"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise Or</a></h3>
 <p><small>この機能は開発中です</small></p>
 <h3 id="bitwise-xor"><a class="header" href="#bitwise-xor"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise Xor</a></h3>
@@ -258,56 +261,58 @@ c: a &lt; 4 &amp;&amp; b &gt; 10
 <h3 id="bitwise-and"><a class="header" href="#bitwise-and"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Bitwise And</a></h3>
 <p><small>この機能は開発中です</small></p>
 <h3 id="equality"><a class="header" href="#equality">Equality</a></h3>
-<p><a href="types/../if.html">if-elif-else文</a>と組み合わせて使うと便利です．</p>
-<pre><code>num a, b
-a: 3
+<p>まず左の式を評価し，続いて右の式を評価します．\(2\)つの値が等しいとき <code>1</code> と評価され，異なるとき <code>0</code> と評価されます．
+<a href="types/../if.html">if-elif-else文</a>や<a href="types/../loop.html">loop文</a>と組み合わせて使うと便利です．</p>
+<pre><code>a: 3
 b: a = 3
 </code></pre>
-<pre><code>num a, b
-a: 3
+<p><code>b</code> には <code>1</code> が代入されます．</p>
+<pre><code>a: 3
 b: a != 3
 </code></pre>
+<p><code>b</code> には <code>0</code> が代入されます．</p>
 <h3 id="relational"><a class="header" href="#relational">Relational</a></h3>
-<p><a href="types/../if.html">if-elif-else文</a>と組み合わせて使うと便利です．</p>
-<pre><code>num a, b
-a: 3
+<p>まず左の式を評価し，続いて右の式を評価します．\(2\)つの値の大小関係に基づいて， <code>1</code> または <code>0</code> と評価されます．
+<a href="types/../if.html">if-elif-else文</a>や<a href="types/../loop.html">loop文</a>と組み合わせて使うと便利です．</p>
+<pre><code>a: 3
 b: a &lt; 3
 </code></pre>
-<pre><code>num a, b
-a: 3
+<p><code>b</code> には <code>0</code> が代入されます．</p>
+<pre><code>a: 3
 b: a &lt;= 3
 </code></pre>
-<pre><code>num a, b
-a: 3
+<p><code>b</code> には <code>1</code> が代入されます．</p>
+<pre><code>a: 3
 b: a &gt; 3
 </code></pre>
-<pre><code>num a, b
-a: 3
+<p><code>b</code> には <code>0</code> が代入されます．</p>
+<pre><code>a: 3
 b: a &gt;= 3
 </code></pre>
+<p><code>b</code> には <code>1</code> が代入されます．</p>
 <h3 id="shift"><a class="header" href="#shift"><lord-icon src="https://cdn.lordicon.com/giaigwkd.json" trigger="loop" delay="1000" style="height:2em"></lord-icon>Shift</a></h3>
 <p><small>この機能は開発中です</small></p>
 <h3 id="additive"><a class="header" href="#additive">Additive</a></h3>
 <p>和は <code>+</code> ，差は <code>-</code> で行います．</p>
-<pre><code>num a, b, c
-
-a: 10
+<pre><code>a: 10
 b: 20
-c: 1 + 2
-c: a + b
-c: a - 200
+c: a + b - 200
 </code></pre>
-<p><code>c</code> には，5行目では <code>3</code> ，6行目では <code>30</code> ，7行目では <code>-190</code> が代入されます．</p>
+<p><code>c</code> には <code>-170</code> が代入されます．</p>
 <h3 id="multiplicative"><a class="header" href="#multiplicative">Multiplicative</a></h3>
 <p>積は <code>*</code> ，商は <code>/</code> で行います．剰余は <code>%</code> です．</p>
-<pre><code>num a, b, c
-
-a: 10
-b: 20
-c: 10 / 5
-c: b % a
-c: a * 200
+<pre><code>a: 10 / 5
 </code></pre>
+<p><code>a</code> には <code>2</code> が代入されます．</p>
+<pre><code>a: 10
+b: 3
+c: a % b
+</code></pre>
+<p><code>c</code> には <code>1</code> が代入されます．</p>
+<pre><code>a: 12
+b: a * 200
+</code></pre>
+<p><code>b</code> には <code>2400</code> が代入されます．</p>
 <div style="break-before: page; page-break-before: always;"></div><script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <h1 id="配列"><a class="header" href="#配列">配列</a></h1>
 <p><code>array</code> 型では，任意の同じ型の値を複数扱うことができます．</p>
